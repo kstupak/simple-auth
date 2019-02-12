@@ -1,0 +1,7 @@
+parameters:
+  security.user_provider: ...
+
+services:
+  SimpleAuth\Controller\:
+    resource: '%kernel.project_dir%/../vendor/kstupak/simple-auth/src/Controller'
+    tags: ['controller.service_arguments']

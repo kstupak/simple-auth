@@ -1,0 +1,23 @@
+{
+    "name": "kstupak/simple-auth",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kostiantyn Stupak",
+            "email": "konstantin.stupak@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SimpleAuth\\":  "src"
+        }
+    },
+    "require": {
+        "php": "^7.2",
+        "kstupak/symfony-toolbox": "dev-master",
+        "symfony/security-bundle": "^4.2"
+    },
+    "description": "",
+    "minimum-stability": "stable"
+}

@@ -1,0 +1,38 @@
+security:
+  role_hierarchy:
+    ROLE_ADMIN: ROLE_USER
+    ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+  providers:
+    user:
+      id: '%security.user_provider%'
+
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+
+    login:
+      pattern: ^/(login|reset|reset/([A-Z0-9]{16}))$
+      security: false
+
+    public:
+      pattern: ^/(\d+\.\d+)
+      security: false
+
+    main:
+      pattern: ^/
+      guard:
+        authenticators:
+          - SimpleAuth\Authenticator\AccessTokenAuthenticator
+        entry_point: SimpleAuth\Authenticator\AccessTokenAuthenticator
+      anonymous: ~
+      logout: ~
+      stateless: true
+
+  # Easy way to control access for large sections of your site
+  # Note: Only the *first* access control that matches will be used
+  access_control:
+    - {path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - {path: ^/(reset|reset/[A-Z0-9]{16})$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - {path: ^/, roles: ROLE_USER }
