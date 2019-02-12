@@ -2,6 +2,7 @@
     "name": "kstupak/simple-auth",
     "type": "library",
     "license": "MIT",
+    "homepage": "https://github.com/kstupak/simple-auth",
     "authors": [
         {
             "name": "Kostiantyn Stupak",
@@ -18,6 +19,6 @@
         "kstupak/symfony-toolbox": "dev-master",
         "symfony/security-bundle": "^4.2"
     },
-    "description": "",
+    "description": "Simple and straightforward implementation of API key-based security",
     "minimum-stability": "stable"
 }

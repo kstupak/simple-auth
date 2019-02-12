@@ -13,11 +13,6 @@ namespace SimpleAuth\Model\Behaviour;
 
 trait UserInterfaceCompliant
 {
-    public function getRoles()
-    {
-        return $this->roles ?? [];
-    }
-
     public function getUsername()
     {
         return $this->email ?? $this->username;
