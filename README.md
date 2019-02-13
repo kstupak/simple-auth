@@ -66,7 +66,7 @@ final class UserProvider extends \SimpleAuth\UserProvider
 }
 ```
 
-2. Add following snippet to ```config/packages/doctrine.yaml```:
+4. Add following snippet to ```config/packages/doctrine.yaml```:
 ```yaml
 doctrine:
   orm:
@@ -79,7 +79,7 @@ doctrine:
         alias: SimpleAuth
 ``` 
 
-3. Add definition for ```uuid_binary``` type for doctrine:
+5. Add definition for ```uuid_binary``` type for doctrine:
 ```yaml
 # config/packages/ramsey_uuid_doctrine.yaml
 
@@ -89,13 +89,13 @@ doctrine:
       uuid_binary: 'Ramsey\Uuid\Doctrine\UuidBinaryType'
 ```
 
-4. Copy contents of the ```vendor/kstupak/simple-auth/src/Resource/security.yaml``` to ```config/packages/security.yaml``` and replace ```providers.user.id``` value with class name of your own user provider implementation
+6. Copy contents of the ```vendor/kstupak/simple-auth/src/Resource/security.yaml``` to ```config/packages/security.yaml``` and replace ```providers.user.id``` value with class name of your own user provider implementation
 
-5. Register bundle:
+7. Register bundle:
 ```php
 <?php
 
-# config/bindles.php
+# config/bundles.php
 
 return [
     # Here are other bundles
@@ -104,7 +104,7 @@ return [
 
 ```
 
-5. Add routing config to ```config/routes.yaml```
+8. Add routing config to ```config/routes.yaml```
 ```yaml
 security:
   resource: '../vendor/kstupak/simple-auth/Controller/SecurityController.php'
