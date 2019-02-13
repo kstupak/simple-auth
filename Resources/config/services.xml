@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <defaults public="false"/>
+
+        <service id="SimpleAuth\Service\Authenticator\UsernamePasswordAuthenticator" class="SimpleAuth\Service\Authenticator\UsernamePasswordAuthenticator" public="true">
+            <argument type="service" id="user.provider"/>
+            <argument type="service" id="event_dispatcher"/>
+        </service>
+
+        <service id="SimpleAuth\Service\Authenticator\AccessTokenAuthenticator" class="SimpleAuth\Service\Authenticator\AccessTokenAuthenticator" public="true">
+            <argument type="service" id="user.provider"/>
+        </service>
+
+        <service id="SimpleAuth\Controller\SecurityController" class="SimpleAuth\Controller\SecurityController">
+            <argument type="service" id="SimpleAuth\Service\Authenticator\UsernamePasswordAuthenticator"/>
+            <tag name="controller.service_arguments"/>
+        </service>
+    </services>
+</container>

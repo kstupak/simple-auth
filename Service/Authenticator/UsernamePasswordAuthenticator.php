@@ -13,7 +13,7 @@ namespace SimpleAuth\Service\Authenticator;
 use SimpleAuth\Event\UserEvent;
 use SimpleAuth\Event\UserEvents;
 use SimpleAuth\Model\User;
-use SimpleAuth\UserProvider;
+use SimpleAuth\Service\UserProvider;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 

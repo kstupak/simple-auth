@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace SimpleAuth;
+namespace SimpleAuth\Service;
 
 use Assert\Assertion;
 use Doctrine\ORM\EntityRepository;
