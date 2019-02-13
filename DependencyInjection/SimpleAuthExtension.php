@@ -10,19 +10,19 @@
 
 namespace SimpleAuth\DependencyInjection;
 
-
-use SimpleAuth\Controller\SecurityController;
-use SimpleAuth\Service\Authenticator\UsernamePasswordAuthenticator;
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
 class SimpleAuthExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
-        $this->addAnnotatedClassesToCompile([
-            SecurityController::class,
-            UsernamePasswordAuthenticator::class
-        ]);
+        $loader = new XmlFileLoader(
+            $container,
+            new FileLocator(__DIR__.'/../Resources/config')
+        );
+        $loader->load('services.xml');
     }
 }

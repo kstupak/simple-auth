@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("", name="security_")
  */
-final class SecurityController
+class SecurityController
 {
     /** @var UsernamePasswordAuthenticator */
     private $authenticator;
