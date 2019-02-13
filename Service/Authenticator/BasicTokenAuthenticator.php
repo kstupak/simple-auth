@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace SimpleAuth\Authenticator;
+namespace SimpleAuth\Service\Authenticator;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

@@ -10,7 +10,7 @@
 
 namespace SimpleAuth\Controller;
 
-use SimpleAuth\Authenticator\UsernamePasswordAuthenticator;
+use SimpleAuth\Service\Authenticator\UsernamePasswordAuthenticator;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
