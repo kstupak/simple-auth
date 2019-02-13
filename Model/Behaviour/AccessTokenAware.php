@@ -23,7 +23,7 @@ trait AccessTokenAware
         return $this->accessToken;
     }
 
-    public function createToken(int $tokenLength = null)
+    public function createToken(?int $tokenLength = null)
     {
         $this->accessToken = AccessToken::create($tokenLength);
     }
