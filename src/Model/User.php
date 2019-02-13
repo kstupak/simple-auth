@@ -79,4 +79,11 @@ class User implements UserInterface
 
         return password_verify($password, $this->password);
     }
+
+    public function resetPassword(string $password, callable $hasher = null)
+    {
+        $this->password = $hasher
+            ? $hasher($password)
+            : password_hash($password, PASSWORD_BCRYPT);
+    }
 }
