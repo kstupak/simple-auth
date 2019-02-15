@@ -12,7 +12,7 @@ namespace SimpleAuth\Model\Behaviour;
 
 trait RoleAware
 {
-    private $roles = [];
+    protected $roles = [];
 
     public function getRoles(): array
     {
@@ -34,5 +34,10 @@ trait RoleAware
         $this->roles = \array_filter($this->roles, function(string $r) use ($role) {
             return $r !== $role;
         });
+    }
+
+    public function replaceRoles(array $roles)
+    {
+        $this->roles = $roles;
     }
 }
