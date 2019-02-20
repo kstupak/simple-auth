@@ -10,7 +10,6 @@
 
 namespace SimpleAuth\Model;
 
-
 use Toolbox\Utility\TokenGenerator;
 
 final class AccessToken
@@ -51,6 +50,6 @@ final class AccessToken
         $now = new \DateTimeImmutable();
         $expiresAt = $now->setTimestamp($now->getTimestamp() + self::TOKEN_TTL);
 
-        return new self($token, $expiresAt);
+        return new self(strtoupper($token), $expiresAt);
     }
 }
