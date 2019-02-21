@@ -10,6 +10,7 @@
 
 namespace SimpleAuth\Model;
 
+
 use Toolbox\Utility\TokenGenerator;
 
 final class AccessToken
