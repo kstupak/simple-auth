@@ -11,23 +11,37 @@
 namespace SimpleAuth\Controller;
 
 use SimpleAuth\Service\Authenticator\UsernamePasswordAuthenticator;
+use SimpleAuth\Service\SecurityServiceInterface;
+use SimpleAuth\Service\UserServiceInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
+use Toolbox\Controller\Traits\CanRespondWithJson;
 
 /**
  * @Route("", name="security_")
  */
 class SecurityController
 {
-    /** @var UsernamePasswordAuthenticator */
-    private $authenticator;
+    use CanRespondWithJson;
+
+    /** @var SecurityServiceInterface */
+    private $securityService;
+    /** @var UserServiceInterface */
+    private $userService;
+    /** @var SerializerInterface */
+    private $serializer;
 
     public function __construct(
-        UsernamePasswordAuthenticator $authenticator
+        SecurityServiceInterface $securityService,
+        UserServiceInterface $userService,
+        SerializerInterface $serializer
     ){
-        $this->authenticator = $authenticator;
+        $this->securityService = $securityService;
+        $this->userService     = $userService;
+        $this->serializer = $serializer;
     }
 
     /**
@@ -39,7 +53,7 @@ class SecurityController
         $password = $request->get('password');
 
         try {
-            $token = $this->authenticator->login($email, $password);
+            $token = $this->securityService->login($email, $password);
             $response = new JsonResponse($token, Response::HTTP_OK);
         } catch (\Exception $e) {
             $response = new JsonResponse('Unauthorized', Response::HTTP_UNAUTHORIZED);
@@ -53,7 +67,8 @@ class SecurityController
      */
     public function logout(Request $request): Response
     {
-        throw new \RuntimeException("NYI");
+        $this->securityService->logout($this->securityService->getCurrentUser());
+        return $this->respond('OK');
     }
 
     /**
@@ -61,7 +76,12 @@ class SecurityController
      */
     public function resetRequest(Request $request): Response
     {
-        throw new \RuntimeException("NYI");
+        if (!$request->request->has('user')) {
+            throw new \InvalidArgumentException('User ID missing');
+        }
+
+        $this->userService->requestUserPasswordReset($request->get('user'));
+        return $this->respond('OK');
     }
 
     /**
@@ -69,6 +89,15 @@ class SecurityController
      */
     public function resetConfirm(Request $request, string $token): Response
     {
-        throw new \RuntimeException("NYI");
+        $this->userService->confirmUserPasswordReset($token, $request->get('password'));
+        return $this->respond('OK');
+    }
+
+    /**
+     * @Route("/current", name="current_user", methods={"GET"})
+     */
+    public function getCurrentUser(): Response
+    {
+        return $this->respond($this->securityService->getCurrentUser());
     }
 }

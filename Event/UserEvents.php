@@ -14,6 +14,8 @@ class UserEvents
 {
     const LOGIN  = 'user.login';
     const LOGOUT = 'user.logout';
+    const PASSWORD_RESET_REQUESTED = 'user.password_reset_request';
+    const PASSWORD_RESET_CONFIRMED = 'user.password_reset_confirmed';
 
     private function __construct()
     {
