@@ -37,6 +37,7 @@ trait AccessTokenAware
 
     public function removeToken()
     {
-        $this->accessToken = null;
+        $this->accessToken          = null;
+        $this->accessTokenExpiresAt = null;
     }
 }
