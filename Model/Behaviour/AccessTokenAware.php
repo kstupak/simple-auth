@@ -18,9 +18,12 @@ trait AccessTokenAware
     /** @var AccessToken */
     private $accessToken;
 
+    /** @var \DateTimeImmutable */
+    private $accessTokenExpiresAt;
+
     public function getAccessToken(): ?AccessToken
     {
-        return $this->accessToken;
+        return AccessToken::restore($this->accessToken, $this->accessTokenExpiresAt);
     }
 
     public function createToken(?int $tokenLength = null)

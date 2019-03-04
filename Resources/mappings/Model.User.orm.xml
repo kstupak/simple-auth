@@ -13,6 +13,9 @@
 
         <field name="roles"      type="json_array" nullable="false"/>
 
+        <field name="accessToken"     type="string"             nullable="true"/>
+        <field name="accessTokenExpiresAt" type="datetime_immutable" nullable="true"/>
+
         <embedded name="accessToken" class="SimpleAuth\Model\AccessToken" column-prefix="access_token_"/>
     </mapped-superclass>
 </doctrine-mapping>
