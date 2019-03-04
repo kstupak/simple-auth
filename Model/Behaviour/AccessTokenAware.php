@@ -23,6 +23,8 @@ trait AccessTokenAware
 
     public function getAccessToken(): ?AccessToken
     {
+        if (!$this->accessToken || !$this->accessTokenExpiresAt) { return null; }
+
         return AccessToken::restore($this->accessToken, $this->accessTokenExpiresAt);
     }
 
