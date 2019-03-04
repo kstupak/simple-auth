@@ -30,7 +30,9 @@ trait AccessTokenAware
 
     public function createToken(?int $tokenLength = null)
     {
-        $this->accessToken = AccessToken::create($tokenLength);
+        $token = AccessToken::create($tokenLength);
+        $this->accessToken          = $token->getToken();
+        $this->accessTokenExpiresAt = $token->getExpiresAt();
     }
 
     public function removeToken()
