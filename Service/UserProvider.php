@@ -35,7 +35,7 @@ abstract class UserProvider implements UserProviderInterface
 
     public function findByAccessToken(string $token): UserInterface
     {
-        $user = $this->repository->findOneBy(['accessToken.token' => $token]);
+        $user = $this->repository->findOneBy(['accessToken' => $token]);
         Assertion::notEmpty($user);
 
         return $user;
