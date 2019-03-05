@@ -46,7 +46,7 @@ final class AccessTokenAuthenticator extends BasicTokenAuthenticator
     public function checkCredentials($credentials, UserInterface $user)
     {
         /** @var User $user */
-        return !$user->getToken()->isExpired();
+        return !$user->getAccessToken()->isExpired();
     }
 
 }
