@@ -12,7 +12,7 @@ namespace SimpleAuth\Service\Authenticator;
 
 use SimpleAuth\Model\AccessToken;
 use SimpleAuth\Model\User;
-use SimpleAuth\UserProvider;
+use SimpleAuth\Service\UserProvider;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;

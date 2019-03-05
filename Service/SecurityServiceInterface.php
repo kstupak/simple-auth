@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 interface SecurityServiceInterface
 {
-    public function login(string $username, string $password): UserInterface;
+    public function login(string $username, string $password): string;
     public function logout(UserInterface $user);
 
     public function getCurrentUser(): UserInterface;

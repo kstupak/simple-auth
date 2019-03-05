@@ -18,18 +18,26 @@ trait AccessTokenAware
     /** @var AccessToken */
     private $accessToken;
 
+    /** @var \DateTimeImmutable */
+    private $accessTokenExpiresAt;
+
     public function getAccessToken(): ?AccessToken
     {
-        return $this->accessToken;
+        if (!$this->accessToken || !$this->accessTokenExpiresAt) { return null; }
+
+        return AccessToken::restore($this->accessToken, $this->accessTokenExpiresAt);
     }
 
     public function createToken(?int $tokenLength = null)
     {
-        $this->accessToken = AccessToken::create($tokenLength);
+        $token = AccessToken::create($tokenLength);
+        $this->accessToken          = $token->getToken();
+        $this->accessTokenExpiresAt = $token->getExpiresAt();
     }
 
     public function removeToken()
     {
-        $this->accessToken = null;
+        $this->accessToken          = null;
+        $this->accessTokenExpiresAt = null;
     }
 }

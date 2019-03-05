@@ -52,4 +52,9 @@ final class AccessToken
 
         return new self(strtoupper($token), $expiresAt);
     }
+
+    public static function restore(string $token, \DateTimeImmutable $expiresAt): self
+    {
+        return new self($token, $expiresAt);
+    }
 }

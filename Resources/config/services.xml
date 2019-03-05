@@ -17,7 +17,9 @@
         </service>
 
         <service id="SimpleAuth\Controller\SecurityController" class="SimpleAuth\Controller\SecurityController">
-            <argument type="service" id="SimpleAuth\Service\Authenticator\UsernamePasswordAuthenticator"/>
+            <argument type="service" id="SimpleAuth\Service\SecurityServiceInterface"/>
+            <argument type="service" id="SimpleAuth\Service\UserServiceInterface"/>
+            <argument type="service" id="serializer"/>
             <tag name="controller.service_arguments"/>
         </service>
     </services>
