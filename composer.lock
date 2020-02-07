@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "79ed8fc5b12a6d059d9ff5fa551a56da",
+    "content-hash": "46d043ad51604a736c09defcb1523857",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1071,16 +1071,16 @@
         },
         {
             "name": "kstupak/symfony-toolbox",
-            "version": "dev-master",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kstupak/symfony-toolbox.git",
-                "reference": "7a240066d3bc5581a1da1525790723617bc0a67c"
+                "reference": "710c8bb0b26472e2055a6646957c3ab710936e1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kstupak/symfony-toolbox/zipball/7a240066d3bc5581a1da1525790723617bc0a67c",
-                "reference": "7a240066d3bc5581a1da1525790723617bc0a67c",
+                "url": "https://api.github.com/repos/kstupak/symfony-toolbox/zipball/710c8bb0b26472e2055a6646957c3ab710936e1d",
+                "reference": "710c8bb0b26472e2055a6646957c3ab710936e1d",
                 "shasum": ""
             },
             "require": {
@@ -1088,7 +1088,7 @@
                 "doctrine/collections": "^1.5",
                 "doctrine/orm": "^2.6",
                 "ircmaxell/random-lib": "^1.2",
-                "nikic/iter": "^1.6",
+                "nikic/iter": "^2.0",
                 "ramsey/uuid": "^3.8",
                 "sensio/framework-extra-bundle": "^5.2",
                 "symfony/serializer": "^4.2",
@@ -1111,32 +1111,39 @@
                 }
             ],
             "description": "Set of classes and utils I use throughout my projects",
-            "time": "2019-03-05T23:13:22+00:00"
+            "time": "2020-02-04T15:10:42+00:00"
         },
         {
             "name": "nikic/iter",
-            "version": "v1.6.0",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/iter.git",
-                "reference": "fed36b417ea93fe9b4b7cb2e2abf98d91092564c"
+                "reference": "1417341030a43fba0764486f7ad49ccc7b76e73f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/iter/zipball/fed36b417ea93fe9b4b7cb2e2abf98d91092564c",
-                "reference": "fed36b417ea93fe9b4b7cb2e2abf98d91092564c",
+                "url": "https://api.github.com/repos/nikic/iter/zipball/1417341030a43fba0764486f7ad49ccc7b76e73f",
+                "reference": "1417341030a43fba0764486f7ad49ccc7b76e73f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.0"
+                "php": "^7.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.0|~5.0"
+                "phpunit/phpunit": "~7.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
             "autoload": {
                 "files": [
-                    "src/bootstrap.php"
+                    "src/iter.func.php",
+                    "src/iter.php",
+                    "src/iter.rewindable.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1155,7 +1162,7 @@
                 "generator",
                 "iterator"
             ],
-            "time": "2017-11-10T22:56:03+00:00"
+            "time": "2019-05-12T20:50:16+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -3701,9 +3708,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "kstupak/symfony-toolbox": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
